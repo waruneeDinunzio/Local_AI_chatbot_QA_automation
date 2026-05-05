@@ -2,7 +2,7 @@
 
 ## Playwright, End-to-End Testing & AI Workflow Validation
 
-🔗 GitHub Repository: https://github.com/waruneeDinunzio/Local_AI_chatbot_QA_automation
+🔗 GitHub Repository: [https://github.com/waruneeDinunzio/Local_AI_chatbot_QA_automation](https://github.com/waruneeDinunzio/Local_AI_chatbot_QA_automation)
 
 ---
 
@@ -235,5 +235,6 @@ I learned how to:
 QA Automation Engineer
 
 📧 [dinunziow@gmail.com](mailto:dinunziow@gmail.com)
+
 💼 [https://www.linkedin.com/in/warunee-dinunzio/](https://www.linkedin.com/in/warunee-dinunzio/)
 
