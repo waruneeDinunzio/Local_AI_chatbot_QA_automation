@@ -48,7 +48,7 @@ This architecture allows full control over:
 
 * Chat input and message display
 * AI response rendering
-* Loading state ("AI is thinking...")
+* Loading state ("AI is processing...")
 * Error handling for API failures
 * Clear chat functionality
 * Keyboard interaction (Enter to send)
@@ -168,7 +168,7 @@ Prevent sending empty messages
 
 ### ⏳ Loading State Test
 
-Verify "AI is thinking..." appears and disappears correctly
+Verify "AI is processing..." appears and disappears correctly
 
 ---
 
@@ -268,6 +268,7 @@ I learned how to:
 QA Automation Engineer
 
 📧 [dinunziow@gmail.com](mailto:dinunziow@gmail.com)
+
 💼 [https://www.linkedin.com/in/warunee-dinunzio/](https://www.linkedin.com/in/warunee-dinunzio/)
 
 
