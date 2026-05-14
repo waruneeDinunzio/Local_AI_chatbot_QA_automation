@@ -14,14 +14,14 @@ test.describe("Real Ollama integration", () => {
 
     await chatPage.open();
 
-    await chatPage.sendMessage("Reply with only this word: Playwright");
+    await chatPage.sendMessage("Reply with only this word: Playwright. Do not add punctuation or any other text.");
 
     await expect(page.getByTestId("loading-message")).toBeVisible();
 
     await expect(page.getByTestId("assistant-message").last()).toBeVisible({
       timeout: 30000,
     });
-
-    await expect(page.getByTestId("assistant-message").last()).not.toBeEmpty();
+    // await expect(page.getByTestId("assistant-message").last()).not.toBeEmpty();
+    await expect(page.getByTestId("assistant-message").last()).toContainText("Playwright");
   });
 });
