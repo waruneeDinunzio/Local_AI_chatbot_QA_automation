@@ -3,7 +3,7 @@ import "./App.css";
 
 type Message = {
   role: "user" | "assistant";
-  text: string;
+  content: string;
 };
 
 function App() {
@@ -20,10 +20,15 @@ function App() {
 
     const userMessage: Message = {
       role: "user",
-      text: input,
+      content: input,
     };
+    // ✅ Build the full history as a variable first,
+    // because we need to send it to the backend immediately.
+    // We can't rely on "messages" state here since setMessages
+    // hasn't run yet — React state updates are async.
+    const updatedMessages = [...messages, userMessage];
 
-    setMessages((previousMessages) => [...previousMessages, userMessage]);
+    setMessages(updatedMessages);
     setInput("");
     setError("");
     setIsLoading(true);
@@ -34,7 +39,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: userMessage.text }),
+        body: JSON.stringify({ messages: updatedMessages }), // full history sent to backend for context, not just latest message
       });
 
       const data = await response.json();
@@ -45,7 +50,7 @@ function App() {
 
       const assistantMessage: Message = {
         role: "assistant",
-        text: data.reply,
+        content: data.reply,
       };
 
       setMessages((previousMessages) => [
@@ -74,7 +79,11 @@ function App() {
         {messages.map((message, index) => (
           <div key={index} data-testid={`${message.role}-message`}>
             <strong>{message.role === "user" ? "You" : "AI"}:</strong>{" "}
-            {message.text}
+            {message.content.split("\n").map((line, i) => (
+              <span key={i}>
+                {line}
+              </span>
+            ))}
           </div>
         ))}
 
@@ -87,6 +96,7 @@ function App() {
         data-testid="chat-input"
         value={input}
         placeholder="Ask the local AI something..."
+        disabled={isLoading}
         onChange={(event) => setInput(event.target.value)}
         onKeyDown={(event) => {
           if (event.key === "Enter" && !event.shiftKey) {
